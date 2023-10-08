@@ -6,17 +6,20 @@ btnStop.addEventListener('click', StopButtonClick);
 
 let interval = 0;
 
+function btnEnable(startDisabled, stopDisabled) {
+  btnStart.disabled = startDisabled;
+  btnStop.disabled = stopDisabled;
+}
+
 function StartButtonClick() {
-  btnStart.disabled = true;
-  btnStop.disabled = false;
+  btnEnable(true, false);
   interval = setInterval(() => {
     document.body.style.backgroundColor = getRandomHexColor();
   }, 1000);
 }
 
 function StopButtonClick() {
-  btnStart.disabled = false;
-  btnStop.disabled = true;
+  btnEnable(false, true);
   clearInterval(interval);
 }
 
